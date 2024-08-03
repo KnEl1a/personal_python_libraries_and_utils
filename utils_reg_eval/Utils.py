@@ -107,10 +107,16 @@ def more_reg_eval(y_test, y_pred):
     r2 = r2_score(y_test, y_pred)
     
     # Imprimir resultados
-    print(f'\nMAE (Error Absoluto Medio): {mae} --> {mae*100}%')
-    print(f'\nMSE (Error Cuadrático Medio): {mse} --> {mse*100}%')
-    print(f'\nRMSE (Raíz del Error Cuadrático Medio): {rmse} --> {rmse*100}%')
-    print(f'\nR^2 (Coeficiente de Determinación): {r2} --> {r2*100}%')
+    # print(f'\nMAE (Error Absoluto Medio): {mae}  ')
+    print(f'\nMSE (Error Cuadrático Medio): {mse} ')
+    print(f'\nRMSE (Raíz del Error Cuadrático Medio): {rmse}')
+    print(f'\nR^2 (Coeficiente de Determinación): {r2}')
+    if r2 > 0:
+        print(f"el r2 es positivo, el modelo explica el {r2*100}% de la varianza de los datos, y por tanto mejora la capacidad predictiva en comparacion a usar el promedio de los valores de la variable dependiente para hacer predicciones")
+    elif r2 == 0:
+        print("r2 = 0 : indica que el modelo no mejora en absoluto la capacidad de predicción en comparación con un modelo que predice la media de la variable dependiente. Es decir, el modelo no está capturando ninguna de la variabilidad en los datos.")
+    else:
+        print("r2 es negativo significa que el modelo es peor que simplemente usar el promedio de los valores de la variable dependiente para hacer predicciones")
 
 
 def complete_reg_eval(model, X_test, y_test, y_pred):
