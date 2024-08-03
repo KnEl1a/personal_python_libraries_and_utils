@@ -64,8 +64,9 @@ def reg_evaluation(model, X_test, y_test, verbose=False):
     y_range = y_test.max() - y_test.min()
 
     # Calcular el MAE en porcentaje
-    mae_percentage = (mae / y_range) * 100
-    print(f'Precisión relativa del modelo según el MAE y el rango de valores de la variable objetivo: \n-> {mae_percentage:.2f}%')
+    mae_percentage = 100-((mae / y_range) * 100)
+    print("Según el MAE y el rango de valores de la variable objetivo")
+    print(f'Precisión relativa del modelo: \n-> {mae_percentage:.2f}%')
 
     if verbose:
         return y_pred, mae_percentage, mae
@@ -106,10 +107,10 @@ def more_reg_eval(y_test, y_pred):
     r2 = r2_score(y_test, y_pred)
     
     # Imprimir resultados
-    # print(f'\nMAE (Error Absoluto Medio): {mae}')
-    print(f'\nMSE (Error Cuadrático Medio): {mse}')
-    print(f'\nRMSE (Raíz del Error Cuadrático Medio): {rmse}')
-    print(f'\nR^2 (Coeficiente de Determinación): {r2}')
+    print(f'\nMAE (Error Absoluto Medio): {mae} --> {mae*100}%')
+    print(f'\nMSE (Error Cuadrático Medio): {mse} --> {mse*100}%')
+    print(f'\nRMSE (Raíz del Error Cuadrático Medio): {rmse} --> {rmse*100}%')
+    print(f'\nR^2 (Coeficiente de Determinación): {r2} --> {r2*100}%')
 
 
 def complete_reg_eval(model, X_test, y_test, y_pred):
